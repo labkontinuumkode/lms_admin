@@ -9,7 +9,6 @@ const connectToMongoDB = require('./config/db');
 require('dotenv').config(); // Load environment variables from .env file
 // Connect to MongoDB
 connectToMongoDB();
-
 var app = express();
 app.use(helmet());
 var corsOptions = {
@@ -29,6 +28,7 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
  
 require('./app/routes/global-route')(app);
+require('./app/routes/auth-route')(app);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

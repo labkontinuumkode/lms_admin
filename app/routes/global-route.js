@@ -1,9 +1,9 @@
- const userController = require('../controller/user/userController');
- const userValidation = require('../middleware/validation/userValidation');
- const prefix = require('../../config/configApi').apiPrefix;
+const prefix = require('../../config/configApi.json').apiPrefix;
+const teacherController = require('../controller/teacher/teacherController');
+const verifyTokenMiddleware = require('../middleware/auth/verifyTokenMiddleware');
+const checkRole = require('../middleware/auth/checkRole');
 
-module.exports = function (app) {
-    app.post(`${prefix}/create/role`, userController.createRole);
-
-  
+ module.exports = function (app) {
+     console.log("----");
+     app.post(`${prefix}/create/teacher`, teacherController.createTeacher);
 };
